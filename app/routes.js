@@ -7,7 +7,7 @@ module.exports = function (app, passport) {
         res.render('index', { title: 'Voting App' });
     });
 
-    app.get('/dashboard', function (req, res) {
+    app.get('/dashboard', isLoggedIn, function (req, res) {
         res.render('dashboard', { title: 'Dashboard' });
     });
 
@@ -83,8 +83,6 @@ module.exports = function (app, passport) {
 
 
 
-    // google ---------------------------------
-
     // send to google to do the authentication
     app.get('/connect/google', passport.authorize('google', { scope: ['profile', 'email'] }));
 
@@ -130,5 +128,5 @@ function isLoggedIn(req, res, next) {
     if (req.isAuthenticated())
         return next();
 
-    res.redirect('/');
+    res.redirect('/login');
 }
