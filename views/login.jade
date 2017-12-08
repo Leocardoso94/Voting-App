@@ -1,17 +1,28 @@
-doctype 5
-html
-  head
-		meta(name='viewport', content='width=device-width, initial-scale=1')
-		title= title
-        link(rel='stylesheet', href='/stylesheets/style.css')
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-	body
-		block content
-			.container
-				form.form-signin(action="/login", method="post")
-					h2.form-signin-heading Please sign in
-					input.input-block-level(type="text", name="username", placeholder="Email address")
-					input.input-block-level(type="password", name="password", placeholder="Password")
-					label.checkbox.
-						<input type="checkbox" value="remember-me" /> Remember me
-					button.btn.btn-large.btn-primary(type="submit") Sign in
+extends layout
+block content
+	h1 Login
+	form.col.s12(method='post', action="/login")
+		.row
+			.col.s12
+		|             
+		.row
+			.input-field.col.s12
+			input#email.validate(type='email', required="true", name='email')
+			|                 
+			label(for='email') Enter your email
+		|             
+		.row
+			.input-field.col.s12
+			input#password.validate(type='password', required="true", name='password')
+			|                 
+			label(for='password') Enter your password
+			|               
+			label(style='float: right;')
+			a.pink-text(href='#!')
+				b Forgot Password?
+		|             
+		br
+		|             
+		center
+			.row
+			button.col.s12.btn.btn-large.waves-effect.indigo(type='submit', name='btn_login') Login
