@@ -1,11 +1,47 @@
 extends layout
 
-block content
+block content       
         .row.center
-          h5.header.col.s12.light Create custom polls with live results
+          h5.header.col.s12.light Hello, #{user.name}
         |       
         .row.center
-          a#download-button.btn-large.waves-effect.waves-light.orange(href='/login') Login
+            button#new-poll-btn.btn-large.waves-effect.waves-light.green New Poll
+            button#my-polls-btn.btn-large.waves-effect.waves-light.blue My Polls
         |       
         br
         br
+        hr
+        .row.center.new-poll#new-poll    
+            h2 New Poll
+            form.center-block.new-poll(method='post', action="/poll")       
+                div.row                
+                    h5 Name your poll.
+                    input#name.validate(type='text', required="true", name='name',placeholder="What is your favorite color?")
+
+                    |             
+                div.row.options
+                    h5 Options.
+                    input#name.validate(type='text', required="true", name='option')
+                    input#name.validate(type='text', name='option')
+                div.row
+                    button.col.s12.btn.btn-large.waves-effect.white.more-options(type='button') More options
+                div.row
+                    button.col.s12.btn.btn-large.waves-effect.indigo(type='submit', name='submit') Submit
+        
+        .row.center.my-polls#my-polls 
+            h2 My Polls
+            table.bordered.centered
+                thead
+                    tr
+                        th Poll Name
+                        th Actions
+                tbody
+                    each poll in polls
+                        tr
+                            td=poll.name
+                            td      
+                                <i class="material-icons" style="color:orange">mode_edit</i>
+                                <i class="material-icons" style="color:red">delete</i>
+
+            
+        script(src="/javascripts/newpoll.js")

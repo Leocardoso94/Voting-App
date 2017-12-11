@@ -1,0 +1,10 @@
+extends layout
+
+block content       
+        .row.center
+            h3=poll.name
+                <canvas id="pie-chart" width="800" height="450"></canvas>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+        script const poll = !{JSON.stringify(poll).replace(/<\//g, '<\\/')}
+        script(src="/javascripts/chart.js")

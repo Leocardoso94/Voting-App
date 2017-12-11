@@ -1,0 +1,24 @@
+extends layout
+block content
+    h1 Sign Up
+    form.col.s12(method='post', action="/signup")       
+        div.row
+            input#name.validate(type='text', required="true", name='name')
+            |                 
+            label(for='name') Enter your name
+            |             
+        div.row
+            input#email.validate(type='email', required="true", name='email')
+            |                 
+            label(for='email') Enter your email
+            |             
+        div.row
+            input#password.validate(type='password', required="true", name='password')
+            |                 
+            label(for='password') Enter your password
+            |               
+    |             
+    center
+        button.col.s12.btn.btn-large.waves-effect.indigo(type='submit', name='btn_login') Login
+    a.col.s12.btn.btn-small.waves-effect.indigo(href="/connect/google")
+        <i class="fa fa-google" aria-hidden="true"></i>  Connect with google

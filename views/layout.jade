@@ -14,7 +14,7 @@ html
         a#logo-container.brand-logo(href='/') Voting App           
         ul.right.hide-on-med-and-down
           li
-            a(href='#') Login           
+            a(href=(user? '/logout': '/login')) #{(user? 'Logout': 'Login')}           
         ul#nav-mobile.side-nav(style='transform: translateX(-100%);')
           li
             a(href='#') Navbar Link           

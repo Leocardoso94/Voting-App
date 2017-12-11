@@ -1,0 +1,16 @@
+extends layout
+
+block content       
+        .row.center  
+            div.col.s6
+                h3= poll.name + '?'
+                h6 by: #{username}
+            .col.s6
+                form(action='/poll/vote', method="post")
+                    input(name='poll_id', type='hidden', value="#{poll.id}")
+                    each option in poll.options
+                        p
+                            input(id="#{option.id}",name='vote', type='radio', value="#{option.id}")
+                            label(for="#{option.id}") #{option.name}
+
+                    button.col.s4.btn.btn-large.waves-effect.green(type='submit', name='btn_login') Vote !
