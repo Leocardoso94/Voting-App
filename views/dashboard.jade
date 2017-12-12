@@ -13,7 +13,7 @@ block content
         hr
         .row.center.new-poll#new-poll    
             h2 New Poll
-            form.center-block.new-poll(method='post', action="/poll")       
+            form.center-block(method='post', action="/poll")       
                 div.row                
                     h5 Name your poll.
                     input#name.validate(type='text', required="true", name='name',placeholder="What is your favorite color?")
@@ -39,9 +39,12 @@ block content
                     each poll in polls
                         tr
                             td=poll.name
-                            td      
-                                <i class="material-icons" style="color:orange">mode_edit</i>
-                                <i class="material-icons" style="color:red">delete</i>
-
+                            td  
+                                a(href="/poll/result/#{poll.id}", target="_blank")
+                                    <i class="material-icons" style="color:green">show_chart</i>
+                                a(href="/poll/#{poll.id}")
+                                    <i class="material-icons" style="color:#2196F3">visibility</i>
+                                a.delete-poll(href="/poll/delete/#{poll.id}")  
+                                    <i class="material-icons" style="color:red">delete</i>
             
         script(src="/javascripts/newpoll.js")

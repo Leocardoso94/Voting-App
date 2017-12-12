@@ -1,6 +1,7 @@
-// config/database.js
+const { dbUrl } = process.env;
+
 module.exports = {
 
-    'url' : 'mongodb://localhost/voting-app' // looks like mongodb://<user>:<pass>@mongo.onmodulus.net:27017/Mikha4ot
+    'url' : dbUrl // looks like mongodb://<user>:<pass>@mongo.onmodulus.net:27017/Mikha4ot
 
 };

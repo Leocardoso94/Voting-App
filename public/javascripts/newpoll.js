@@ -10,12 +10,19 @@ btnMoreOptions.addEventListener('click', () => {
     options.appendChild(input);
 });
 
-document.getElementById('new-poll-btn').onclick = ()=>{
+document.getElementById('new-poll-btn').onclick = () => {
     document.getElementById('my-polls').style.display = 'none';
     document.getElementById('new-poll').style.display = 'block';
 };
 
-document.getElementById('my-polls-btn').onclick = ()=>{
+document.getElementById('my-polls-btn').onclick = () => {
     document.getElementById('my-polls').style.display = 'block';
     document.getElementById('new-poll').style.display = 'none';
 };
+
+const deletePollBtns = [...document.querySelectorAll('.delete-poll')];
+
+deletePollBtns.map(btn => btn.addEventListener('click', event => {
+    if (!confirm('Are you sure?')) event.preventDefault();
+
+}));

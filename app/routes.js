@@ -194,6 +194,17 @@ module.exports = function (app, passport) {
         });
     });
 
+    app.get('/poll/delete/:id', isLoggedIn, (req, res) => {
+        Poll.findById(req.params.id, (err, poll) => {
+            if (poll.userId === req.user.id) {
+                Poll.remove({ _id: req.params.id }, (err) => {
+                    if (err) console.log(err);
+                    res.redirect('/dashboard')
+                });
+            }
+        });
+    });
+
 };
 
 // route middleware to ensure user is logged in
