@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node server.js"
+    "start": "pm2 start server.js",
+    "postinstall": "npm install pm2 -g"
   },
   "dependencies": {
     "bcrypt": "^1.0.3",
